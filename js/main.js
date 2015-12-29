@@ -65,10 +65,4 @@ const render = () => {
 store.subscribe(render);
 render();
 
-//whenever you click on the page, an action is 
-//dispatched to the store object and executed
-// document.addEventListener('click', () => {
-//   store.dispatch({ type: 'INCREMENT'});
-// });
-
 
