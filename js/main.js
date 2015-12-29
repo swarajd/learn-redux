@@ -6,7 +6,7 @@ import todoApp from './todoUtils';
 
 let store = createStore(todoApp);
 
-console.log(store.getState());
+console.log(JSON.stringify(store.getState()));
 
 store.dispatch({
   type: 'ADD_TODO',
@@ -14,4 +14,4 @@ store.dispatch({
   text: 'learn redux'
 });
 
-console.log(store.getState());
+console.log(JSON.stringify(store.getState()));
