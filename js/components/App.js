@@ -4,9 +4,22 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>{this.props.value}</h1>
-        <button onClick={this.props.onIncrement}>+</button>
-        <button onClick={this.props.onDecrement}>-</button>
+        <button onClick={() => {
+            store.dispatch({
+              type: 'ADD_TODO',
+              text: 'Test',
+              id: nextTodoId++
+            });
+          }}>
+            Add Todo
+        </button>
+        <ul>
+          {this.props.todos.map(todo =>
+            <li key={todo.id}>
+              {todo.text}
+            </li>
+          )}
+        </ul>
       </div>
     );
   }

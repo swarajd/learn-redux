@@ -56,7 +56,7 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
   }
 }
 
-//the full app (not yet complete though)
+//== the full app (not yet complete though)
 // const todoApp = (state = {}, action) => {
 //   return {
 //     todos: todos(
@@ -69,6 +69,23 @@ const visibilityFilter = (state = 'SHOW_ALL', action) => {
 //     )
 //   }
 // }
+
+//== implementing the combineReducers method from scratch
+// const tempCombineReducers = (reducers) => {
+//   return (state = {}, action) => {
+//     return Object.keys(reducers).reduce(
+//       (nextState, key) => {
+//         nextState[key] = reducers[key](
+//           state[key],
+//           action
+//         );
+//         return nextState;
+//       },
+//       {}
+//     );
+//   }
+// }
+
 const todoApp = combineReducers({
   todos: todos,
   visibilityFilter: visibilityFilter
