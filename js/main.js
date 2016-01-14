@@ -16,7 +16,7 @@ let store = createStore(todoApp);
 //
 // console.log(JSON.stringify(store.getState()));
 
-
+// a small component that sets the store's visibility filter
 const FilterLink = ({
   filter,
   children,
@@ -36,6 +36,7 @@ const FilterLink = ({
   )
 }
 
+// a function that gets all the relevant todos based on the filter from the store
 const getVisibleTodos = (
   todos,
   filter
