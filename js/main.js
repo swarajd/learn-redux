@@ -36,6 +36,40 @@ const FilterLink = ({
   )
 }
 
+//extract the todo component
+const Todo = ({
+  onClick,
+  completed,
+  text,
+
+}) => (
+  <li
+    onClick={onClick}
+    style={{
+      textDecoration:
+        completed ?
+          'line-through' :
+          'none'
+    }}>
+    {text}
+  </li>
+)
+
+//extract the todo LIST component
+const TodoList = ({
+  todos,
+  onTodoClick
+}) => (
+  <ul>
+    {todos.map(todo =>
+      <Todo key={todo.id}
+            {...todo}
+            onClick={() => onTodoClick(todo.id)}
+      />
+    )}
+  </ul>
+)
+
 // a function that gets all the relevant todos based on the filter from the store
 const getVisibleTodos = (
   todos,
@@ -80,25 +114,14 @@ class App extends React.Component {
           }}>
             Add Todo
         </button>
-        <ul>
-          {visibleTodos.map(todo =>
-            <li key={todo.id}
-              onClick={() => {
-                store.dispatch({
-                  type: 'TOGGLE_TODO',
-                  id: todo.id
-                });
-              }}
-              style={{
-                textDecoration:
-                  todo.completed ?
-                    'line-through' :
-                    'none'
-              }}>
-              {todo.text}
-            </li>
-          )}
-        </ul>
+        <TodoList
+          todos={visibleTodos}
+          onTodoClick={id =>
+            store.dispatch({
+              type: 'TOGGLE_TODO',
+              id
+            })
+          } />
         <p>
           Show:
           {' '}
